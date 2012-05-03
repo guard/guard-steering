@@ -59,7 +59,8 @@ module Guard
       begin
         UI.info 'Running steering'
         paths.each do |path|
-          Steering.compile(File.read(path))
+          UI.info 'Trying Steering precompile on #{path}'
+          ::Steering.compile(File.read(path))
           UI.info 'Steering precompiled #{path}'
         end
       rescue Exception => e
