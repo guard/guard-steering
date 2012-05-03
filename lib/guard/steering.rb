@@ -61,9 +61,14 @@ module Guard
       begin
         UI.info "Running steering"
         paths.each do |path|
-          UI.info "Trying Steering precompile on #{path}"
-          compiled = ::Steering.compile_to_file(File.read(path), File.dirname(path) + "/" + File.basename(path) + ".js")
-          UI.info "Steering precompiled #{path} to #{compiled}"
+          output_folder
+          if !options[:output_folder].nil?
+            output_folder = options[:output_folder]
+          else
+            output_folder = File.dirname(path)
+          end
+          ::Steering.compile_to_file(File.read(path), output_folder + "/" + File.basename(path) + ".js")
+          UI.info "Steering precompiled #{path} to #{output_folder}"
         end
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
