@@ -12,7 +12,8 @@ module Guard
     def initialize(watchers = [], options = {})
       super
       @options = {
-        :run_at_start => true
+        :run_at_start => true,
+        :output_folder => nil
       }.update(options)
     end
 
@@ -62,7 +63,7 @@ module Guard
         UI.info "Running steering"
         paths.each do |path|
           output_folder
-          if options[:output_folder].defined?
+          if !options[:output_folder].nil?
             output_folder = options[:output_folder]
           else
             output_folder = File.dirname(path)
