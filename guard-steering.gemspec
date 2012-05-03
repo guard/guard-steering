@@ -18,8 +18,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   
   gem.add_dependency 'guard'
-  gem.add_dependency 'guard/guard'
-  gem.add_dependency 'guard/watcher'
   gem.add_dependency 'steering'
   
   gem.add_development_dependency 'rspec'
