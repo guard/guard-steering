@@ -62,12 +62,7 @@ module Guard
       begin
         UI.info "Running steering"
         paths.each do |path|
-          output_folder
-          if @options[:output_folder].nil?
-            output_folder = @options[:output_folder]
-          else
-            output_folder = File.dirname(path)
-          end
+          output_folder = (@options[:output_folder].nil? && @options[:output_folder]) || File.dirname(path)
           ::Steering.compile_to_file(File.read(path), output_folder + "/" + File.basename(path) + ".js")
           UI.info "Steering precompiled #{path} to #{output_folder}"
         end
