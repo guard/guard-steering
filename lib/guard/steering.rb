@@ -1,10 +1,11 @@
+# encoding: utf-8
 require 'guard'
 require 'guard/guard'
 require 'guard/watcher'
 require 'steering'
 
 module Guard
-  module Steering < Guard
+  class Steering < Guard
     # Initialize a Guard.
     # @param [Array<Guard::Watcher>] watchers the Guard file watchers
     # @param [Hash] options the custom Guard options
