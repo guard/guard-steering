@@ -1,17 +1,25 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/guard-steering/version', __FILE__)
+require File.expand_path('../lib', __FILE__)
+require 'guard/steering/version'
 
 Gem::Specification.new do |gem|
+  gem.name          = "guard-steering"
+  gem.version       = Guard::SteeringVersion::VERSION
   gem.authors       = ["Daniel Demmel"]
   gem.email         = ["daniel.demmel@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Guard::Steering automatically runs the steering gem to precompile Handlebars.js templates}
+  gem.summary       = %q{Guard gem for steering}
+  gem.homepage      = "https://github.com/daaain/guard-steering"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.name          = "guard-steering"
   gem.require_paths = ["lib"]
-  gem.version       = Guard::Steering::VERSION
+  
+  gem.add_dependency 'guard'
+  gem.add_dependency 'guard/guard'
+  gem.add_dependency 'guard/watcher'
+  gem.add_dependency 'steering'
+  
+  gem.add_development_dependency 'rspec'
 end
