@@ -46,7 +46,7 @@ module Guard
     # @param [Array<String>] paths the changes files or paths
     # @raise [:task_has_failed] when run_on_change has failed
     def run_on_change(paths)
-      run_steering
+      run_steering paths
     end
 
     # Called on file(s) deletions that the Guard watches.
@@ -55,7 +55,7 @@ module Guard
     def run_on_deletion(paths)
     end
     
-    def run_steering
+    def run_steering(paths)
       begin
         UI.info 'Running steering'
         paths.each do |path|
