@@ -11,8 +11,9 @@ module Guard
     # @param [Hash] options the custom Guard options
     def initialize(watchers = [], options = {})
       super
-      
-      options[:run_at_start] = true if options[:run_at_start].nil?
+      @options = {
+        :run_at_start => true
+      }.update(options)
     end
 
     # Call once when Guard starts. Please override initialize method to init stuff.
