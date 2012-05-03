@@ -19,6 +19,7 @@ module Guard
     # Call once when Guard starts. Please override initialize method to init stuff.
     # @raise [:task_has_failed] when start has failed
     def start
+      UI.info("Guard::Steering has started watching your files")
       run_all if options[:run_at_start]
     end
 
