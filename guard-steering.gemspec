@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib', __FILE__)
+$:.push File.expand_path('../lib', __FILE__)
 require 'guard/steering/version'
 
 Gem::Specification.new do |gem|
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
 
   # gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   # gem.files         = `git ls-files`.split("\n")
-  gem.files = Dir.glob('{lib}/**/*') + %w[LICENSE README.rdoc]
+  gem.files = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
   # gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = ["lib"]
   
