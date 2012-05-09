@@ -1,6 +1,6 @@
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
 #
-guard 'steering' do
-  watch(/(.*).handlebars/) {|m| `source_dir/#{m[0]}|output_dir/#{m[0]}` }
+guard 'steering', :output_folder => "build/handlebars" do
+ 	watch(%r{^source/handlebars/.*\.handlebars$})
 end

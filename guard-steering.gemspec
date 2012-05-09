@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.name          = "guard-steering"
   gem.version       = Guard::SteeringVersion::VERSION
   gem.authors       = ["Daniel Demmel"]
-  gem.email         = ["daniel.demmel@gmail.com"]
+  gem.email         = ["dain@danieldemmel.me"]
   gem.description   = %q{Guard::Steering automatically runs the steering gem to precompile Handlebars.js templates}
   gem.summary       = %q{Guard gem for steering}
   gem.homepage      = "https://github.com/daaain/guard-steering"
