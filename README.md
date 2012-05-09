@@ -1,29 +1,17 @@
 # Guard::Steering
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'guard-steering'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install guard-steering
+Lets you configure a Guard that will run Steering whenever a Handlebars.js template is added / updated.
 
 ## Usage
 
-TODO: Write usage instructions here
+Edit the Gemfile so that it looks like:
 
-## Contributing
+    source "http://rubygems.org"
+    gem 'guard-steering'
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Then on your favourite shell type:
+
+    $ bundle install
+    $ bundle exec guard init
+    $ bundle exec guard init steering
+    $ bundle exec guard
