@@ -63,7 +63,7 @@ module Guard
         paths.each do |path|
           output_folder = (!@options[:output_folder].nil? && @options[:output_folder]) || File.dirname(path)
           Dir.mkdir(output_folder) unless File.directory?(output_folder)
-          ::Steering.compile_to_file(File.read(path), output_folder + "/" + File.basename(path) + ".js")
+          ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js")
           UI.info "Steering precompiled #{path} to #{output_folder}"
         end
       rescue Exception => e
