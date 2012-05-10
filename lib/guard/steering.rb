@@ -40,7 +40,7 @@ module Guard
     # This method should be principally used for long action like running all specs/tests/...
     # @raise [:task_has_failed] when run_all has failed
     def run_all
-      paths = Dir.glob("**/*.handlebars")
+      paths = Dir.glob("**/*.*")
       targets = Watcher.match_files(self, paths)  
       run_on_change targets
     end
