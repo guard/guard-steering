@@ -1,6 +1,6 @@
 # Guard::Steering
 
-Lets you configure a Guard that will run Steering whenever a Handlebars.js template is added / updated.
+Lets you configure a Guard that will run [Steering](https://github.com/pixeltrix/steering) whenever a [Handlebars.js](https://github.com/wycats/handlebars.js) template is added / updated.
 
 ## Usage
 
@@ -13,7 +13,7 @@ Edit the Gemfile so that it looks like:
         :branch => 'master'
     gem 'guard-steering'
 
-Note: Steering Gem needs to be able to work with files, at the moment that only work in my fork
+Note: Steering Gem needs to be able to work with files, at the moment that only works in [my fork](https://github.com/daaain/steering) (pull request pending).
 
 Then on your favourite shell type:
 
@@ -31,6 +31,13 @@ You can adapt your 'view' files like you want. Please read Guard doc for more in
 	end
 
 ## Changelog
+
+### 0.0.2
+
+* Added versions to Gem dependencies.
+* Removed 'handlebars' extension requirement, this is now left to Guard watch pattern to filter.
+* Updated documentation with links to other Gems / Github repos.
+* Extended copyright license to ustwo™
 
 ### 0.0.1
 
