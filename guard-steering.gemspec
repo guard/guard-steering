@@ -17,8 +17,8 @@ Gem::Specification.new do |gem|
   # gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = ["lib"]
   
-  gem.add_dependency 'guard'
-  gem.add_dependency 'steering'
+  gem.add_dependency 'guard', '>= 1.0.2'
+  gem.add_dependency 'steering', '>= 1.1.0'
   
-  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rspec', '~> 2.10.0'
 end
