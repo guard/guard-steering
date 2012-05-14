@@ -8,12 +8,8 @@ Edit the Gemfile so that it looks like:
 
     source "http://rubygems.org"
     gem "guard"
-    gem "steering",
-        :git => 'git://github.com/daaain/steering.git', 
-        :branch => 'master'
+    gem "steering"
     gem 'guard-steering'
-
-Note: Steering Gem needs to be able to work with files, at the moment that only works in [my fork](https://github.com/daaain/steering) (pull request pending).
 
 Then on your favourite shell type:
 
@@ -31,6 +27,10 @@ You can adapt your 'view' files like you want. Please read Guard doc for more in
 	end
 
 ## Changelog
+
+### 0.0.3
+
+
 
 ### 0.0.2
 
