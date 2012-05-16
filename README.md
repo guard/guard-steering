@@ -29,8 +29,8 @@ You can adapt your 'view' files like you want. Please read Guard doc for more in
 ## Changelog
 
 ### 0.0.3
-
-
+* Got Travis working
+* Set tests up
 
 ### 0.0.2
 
