@@ -1,4 +1,4 @@
-# Guard::Steering
+# Guard::Steering [![Build Status](https://secure.travis-ci.org/guard/guard-steering.png)](http://travis-ci.org/daaain/guard-steering)
 
 Lets you configure a Guard that will run [Steering](https://github.com/pixeltrix/steering) whenever a [Handlebars.js](https://github.com/wycats/handlebars.js) template is added / updated.
 
