@@ -26,6 +26,13 @@ You can adapt your 'view' files like you want. Please read Guard doc for more in
 	 	watch(%r{^source/handlebars/.*\.handlebars$})
 	end
 
+## Todo
+
+* Finish test suite
+* Guard 1.1 compatibility ( https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1 )
+* Add an example
+* Clean up documentation
+
 ## Changelog
 
 ### 0.0.3
