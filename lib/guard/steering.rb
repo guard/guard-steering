@@ -20,10 +20,10 @@ module Guard
     # Call once when Guard starts. Please override initialize method to init stuff.
     # @raise [:task_has_failed] when start has failed
     def start
-      UI.info("Guard::Steering has started watching your files")
-
       @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
       Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
+
+      UI.info("Guard::Steering has started watching your files with output folder set to #{@output_folder} (in case of nil templates will be compiled to the folder where they are)")
 
       run_all if options[:run_at_start]
     end
@@ -63,7 +63,9 @@ module Guard
     # @raise [:task_has_failed] when run_on_change has failed
     def run_on_removals(paths)
       paths.each do |path|
-        File.exists?((@output_folder || File.dirname(path)) + "/" + File.basename(path) + ".js")
+        output_folder = @output_folder || File.dirname(path)
+        File.exists?(output_folder + "/" + File.basename(path) + ".js")
+        UI.info "Steering deleted #{File.basename(path)}.js from #{output_folder}"
       end
     end
     
