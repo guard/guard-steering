@@ -22,8 +22,8 @@ module Guard
     def start
       UI.info("Guard::Steering has started watching your files")
 
-      output_folder = !@options[:output_folder].nil? && @options[:output_folder]
-      Dir.mkdir(output_folder) if !File.directory?(output_folder) && !output_folder.nil?
+      @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
+      Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
 
       run_all if options[:run_at_start]
     end
@@ -55,7 +55,7 @@ module Guard
     def run_on_changes(paths)
       paths.each do |path|
           # use output_folder or default back to watched file location
-          run_steering(path, output_folder || File.dirname(path))
+          run_steering(path, @output_folder || File.dirname(path))
       end
     end
 
@@ -64,14 +64,14 @@ module Guard
     # @raise [:task_has_failed] when run_on_change has failed
     def run_on_removals(paths)
       paths.each do |path|
-        File.exists?((output_folder || File.dirname(path)) + "/" + File.basename(path) + ".js")
+        File.exists?((@output_folder || File.dirname(path)) + "/" + File.basename(path) + ".js")
       end
     end
     
-    def run_steering(path, output_to_folder)
+    def run_steering(path, output_folder)
       begin
-        ::Steering.compile_to_file(path, output_to_folder + "/" + File.basename(path) + ".js")
-        UI.info "Steering precompiled #{path} to #{output_to_folder}"
+        ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js")
+        UI.info "Steering precompiled #{path} to #{output_folder}"
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
         false
