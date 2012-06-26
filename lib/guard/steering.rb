@@ -48,14 +48,28 @@ module Guard
       run_on_changes targets
     end
 
-    # Called on file(s) modifications that the Guard watches.
+    # Called on file(s) changes that the Guard watches.
     # @param [Array<String>] paths the changes files or paths
-    # @raise [:task_has_failed] when run_on_change has failed
+    # @raise [:task_has_failed] when run_on_changes has failed
     def run_on_changes(paths)
       paths.each do |path|
           # use output_folder or default back to watched file location
           run_steering(path, @output_folder || File.dirname(path))
       end
+    end
+
+    # Called on file(s) additions that the Guard watches.
+    # @param [Array<String>] paths the changes files or paths
+    # @raise [:task_has_failed] when run_on_additions has failed
+    def run_on_additions(paths)
+      super
+    end
+
+    # Called on file(s) modifications that the Guard watches.
+    # @param [Array<String>] paths the changes files or paths
+    # @raise [:task_has_failed] when run_on_modifications has failed
+    def run_on_modifications(paths)
+      super
     end
 
     # Called on file(s) deletions that the Guard watches.
