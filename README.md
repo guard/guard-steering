@@ -46,7 +46,7 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 * Set tests up
 * Cleaned up documentation
 
-### 0.0.2
+### 0.0.2 – last version to support Guard 1.0.x
 
 * Added versions to Gem dependencies.
 * Removed 'handlebars' extension requirement, this is now left to Guard watch pattern to filter.

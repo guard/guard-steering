@@ -21,6 +21,10 @@ module Guard
     # @raise [:task_has_failed] when start has failed
     def start
       UI.info("Guard::Steering has started watching your files")
+
+      output_folder = !@options[:output_folder].nil? && @options[:output_folder]
+      Dir.mkdir(output_folder) if !File.directory?(output_folder) && !output_folder.nil?
+
       run_all if options[:run_at_start]
     end
 
@@ -42,30 +46,33 @@ module Guard
     def run_all
       paths = Dir.glob("**/*.*")
       targets = Watcher.match_files(self, paths)  
-      run_on_change targets
+      run_on_changes targets
     end
 
     # Called on file(s) modifications that the Guard watches.
     # @param [Array<String>] paths the changes files or paths
     # @raise [:task_has_failed] when run_on_change has failed
-    def run_on_change(paths)
-      run_steering paths
+    def run_on_changes(paths)
+      paths.each do |path|
+          # use output_folder or default back to watched file location
+          run_steering(path, output_folder || File.dirname(path))
+      end
     end
 
     # Called on file(s) deletions that the Guard watches.
     # @param [Array<String>] paths the deleted files or paths
     # @raise [:task_has_failed] when run_on_change has failed
-    def run_on_deletion(paths)
+    def run_on_removals(paths)
+      paths.each do |path|
+        File.exists?((output_folder || File.dirname(path)) + "/" + File.basename(path) + ".js")
+      end
     end
     
-    def run_steering(paths)
+    def run_steering(path, output_to_folder)
       begin
-        paths.each do |path|
-          output_folder = (!@options[:output_folder].nil? && @options[:output_folder]) || File.dirname(path)
-          Dir.mkdir(output_folder) unless File.directory?(output_folder)
-          ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js")
-          UI.info "Steering precompiled #{path} to #{output_folder}"
-        end
+        ::Steering.compile_to_file(path, output_to_folder + "/" + File.basename(path) + ".js")
+        UI.info "Steering precompiled #{path} to #{output_to_folder}"
+      end
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
         false

@@ -17,11 +17,11 @@ Gem::Specification.new do |gem|
   # gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = ["lib"]
   
-  gem.add_dependency 'guard', '~> 1.0.2'
-  gem.add_dependency 'steering', '~> 1.1.0'
+  gem.add_dependency 'guard', '~> 1.2.1'
+  gem.add_dependency 'steering', '=> 1.1.0'
   
   gem.add_development_dependency 'bundler', '~> 1.0'
   gem.add_development_dependency 'fakefs', '~> 0.3'
-  gem.add_development_dependency 'guard-rspec', '~> 0.7'
+  gem.add_development_dependency 'guard-rspec', '~> 1.1.0'
   gem.add_development_dependency 'rspec', '~> 2.10.0'
 end
