@@ -72,7 +72,6 @@ module Guard
       begin
         ::Steering.compile_to_file(path, output_to_folder + "/" + File.basename(path) + ".js")
         UI.info "Steering precompiled #{path} to #{output_to_folder}"
-      end
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
         false
