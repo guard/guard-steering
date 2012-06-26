@@ -23,7 +23,7 @@ module Guard
       @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
       Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
 
-      UI.info("Guard::Steering has started watching your files with output folder set to #{@output_folder} (in case of nil templates will be compiled to the folder where they are)")
+      UI.info("Guard::Steering has started watching your files with output folder set to '#{@output_folder}' (in case of 'nil' templates will be compiled to the folder where they are)")
 
       run_all if options[:run_at_start]
     end

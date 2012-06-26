@@ -35,7 +35,6 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 ## Todo
 
 * Finish test suite
-* [Guard 1.1 compatibility](https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1)
 * Add an example
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
 
@@ -45,6 +44,7 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 * Got Travis working
 * Set tests up
 * Cleaned up documentation
+* [Guard 1.1 compatibility](https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1)
 
 ### 0.0.2 – last version to support Guard 1.0.x
 
