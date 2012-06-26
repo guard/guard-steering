@@ -37,7 +37,6 @@ module Guard
     # This method should be mainly used for "reload" (really!) actions like reloading passenger/spork/bundler/...
     # @raise [:task_has_failed] when reload has failed
     def reload
-      run_all
     end
 
     # Called when just `enter` is pressed
