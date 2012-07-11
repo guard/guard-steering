@@ -13,7 +13,8 @@ module Guard
       super
       @options = {
         :run_at_start => true,
-        :output_folder => nil
+        :output_folder => nil,
+        :custom_helpers => nil
       }.update(options)
     end
 
@@ -71,11 +72,25 @@ module Guard
     
     def run_steering(path, output_folder)
       begin
+        load_helpers
+        
         ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js")
+        
         UI.info "Steering precompiled #{path} to #{output_folder}"
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
         false
+      end
+    end
+
+    def load_helpers
+      unless options[:custom_helpers].nil?
+        if File.directory?(options[:custom_helpers])
+          helper_files = Dir.glob(options[:custom_helpers]+"/**/*.js")
+          helper_files.each do |helper_path|
+            ::Steering.add_helper(File.basename(helper_path, ".js"), File.read(helper_path))
+          end
+        end
       end
     end
   end
