@@ -35,6 +35,7 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 ## Todo
 
 * Finish test suite
+* Fix bug with empty template being generated for deleted file
 * Add an example
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
 

@@ -25,7 +25,7 @@ module Guard
 
       UI.info("Guard::Steering has started watching your files with output folder set to '#{@output_folder}' (in case of 'nil' templates will be compiled to the folder where they are)")
 
-      run_all if options[:run_at_start]
+      run_all if @options[:run_at_start]
     end
 
     # Called when `stop|quit|exit|s|q|e + enter` is pressed (when Guard quits).
