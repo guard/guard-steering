@@ -72,7 +72,7 @@ module Guard
     
     def run_steering(path, output_folder)
       begin
-        ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js", @options[:register_partials])
+        ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js", '.handlebars', @options[:register_partials])
         UI.info "Steering precompiled #{path} to #{output_folder}"
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
