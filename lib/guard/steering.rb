@@ -13,7 +13,8 @@ module Guard
       super
       @options = {
         :run_at_start => true,
-        :output_folder => nil
+        :output_folder => nil,
+        :register_partials => false
       }.update(options)
     end
 
@@ -71,7 +72,7 @@ module Guard
     
     def run_steering(path, output_folder)
       begin
-        ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js")
+        ::Steering.compile_to_file(path, output_folder + "/" + File.basename(path) + ".js", @options[:run_at_start])
         UI.info "Steering precompiled #{path} to #{output_folder}"
       rescue Exception => e
         UI.error "Steering precompilation failed: #{e}"
