@@ -32,49 +32,19 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
     $ bundle exec guard init steering
     $ bundle exec guard
 
-### Options
-
-**:run_at_start (default: true)**
-
-Standard Guard options, decides whether Guard::Steering should run when starting Guard up or not.
-
-**:output_folder (default: nil)**
-
-Output folder for compiled templates. If not specified, current folder is going to be used.
-
-**:custom_helpers (default: nil)**
-
-Folder which contains custom Handlebars helpers.
-
-Make sure your file names correspond to the helper names inside and each file contains only that helper! In order to be able to [optimise helper JavaScript runtime performance](https://github.com/wycats/handlebars.js/#optimizations), Guard::Steering will add them to the list of known helpers based on the file name (to prevent having to parse the contents of the JavaScript code).
-
-So for example you could have a 'formatPhoneNumber.js' with:
-
-	Handlebars.registerHelper("formatPhoneNumber", function(phoneNumber) {
-		phoneNumber = phoneNumber.toString();
-		return "(" + phoneNumber.substr(0,3) + ") " + phoneNumber.substr(3,3) + "-" + phoneNumber.substr(6,4);
-	});
-
-Which then can be used inside your templates as:
-
-	{{formatPhoneNumber phoneNumber}}
-
 ## Todo
 
 * Finish test suite
 * Add an example
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
-* Figure out how to watch changes of custom_helpers
 
 ## Changelog
 
 ### 0.0.3 - in progress
-
 * Got Travis working
 * Set tests up
 * Cleaned up documentation
 * [Guard 1.1 compatibility](https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1)
-* Added 'custom_helpers' option and functionality to inject them into the JavaScript context
 
 ### 0.0.2 – last version to support Guard 1.0.x
 
