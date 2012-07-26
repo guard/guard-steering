@@ -16,14 +16,14 @@ module Guard
         :output_folder => nil,
         :register_partials => false
       }.update(options)
+
+      @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
+      Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
     end
 
     # Call once when Guard starts. Please override initialize method to init stuff.
     # @raise [:task_has_failed] when start has failed
     def start
-      @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
-      Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
-
       UI.info("Guard::Steering has started watching your files with output folder set to '#{@output_folder}' (in case of 'nil' templates will be compiled to the folder where they are)")
 
       run_all if @options[:run_at_start]
