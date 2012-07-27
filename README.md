@@ -36,16 +36,19 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 
 * Finish test suite
 * Fix bug with empty template being generated for deleted file
-* Add an example
+* Add an example - WIP at https://github.com/daaain/guard-steering-sample
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
 
 ## Changelog
 
-### 0.0.3 - in progress
+### 0.0.3
 * Got Travis working
-* Set tests up
+* Set tests up (still need to cover actual functionality)
 * Cleaned up documentation
-* [Guard 1.1 compatibility](https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1)
+* Now compatible with [Guard 1.1+](https://github.com/guard/guard/wiki/Upgrade-guide-for-existing-guards-to-Guard-v1.1) APIs
+* Added 'register_partials' option, which automatically registers templates as partials too
+* Made it work with [static Guard compilation](https://github.com/guard/guard/wiki/Guard-Cookbook), so can be used from Rake or even a simple Ruby script
+* Fixed bug with 'run_at_start' option
 
 ### 0.0.2 – last version to support Guard 1.0.x
 
