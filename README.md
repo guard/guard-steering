@@ -1,16 +1,16 @@
-# Guard::Steering [![Build Status](https://secure.travis-ci.org/daaain/guard-steering.png)](http://travis-ci.org/daaain/guard-steering) [![Dependency Status](https://gemnasium.com/daaain/guard-steering.png)](https://gemnasium.com/daaain/guard-steering)
+# Guard::Steering [![Build Status](https://secure.travis-ci.org/daaain/guard-steering.png)](http://travis-ci.org/daaain/guard-steering) [![Dependency Status](https://gemnasium.com/daaain/guard-steering.png)](https://gemnasium.com/daaain/guard-steering) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/daaain/guard-steering)
 
 ## About
 
 Lets you set up a [Guard](https://github.com/guard/guard) that will run [Steering](https://github.com/pixeltrix/steering) whenever a [Handlebars.js](https://github.com/wycats/handlebars.js) template is added / updated.
 
-The reason this Gem was born is developing a HTML5 based desktop application which relies on static compilation. Still wanting to get the benefit of having fast Handlebars templating, precompilation is now done development time instead of loading the templates and letting runtime JS do the work.
-
-This also enables using Handlebars in static ERB templates by wrapping Steering compilation into a custom method.
+The reason this Gem was born is developing a HTML5 based desktop application which relies on static compilation. Still wanting to get the benefit of having fast Handlebars templating, precompilation is now done development time instead of loading the templates and letting the full runtime JS do the work.
 
 ## Usage
 
 ### Guardfile
+
+For some comprehensive examples and explanation see [Guard-Steering-examples](https://github.com/daaain/guard-steering-examples) or in case you're familiar with Handlebars and Guard just read on.
 
 Point the Guard watcher to your Handlebars template folder, set up the output folder in the options part and you're all set! Note: at the moment Guard::Steering won't rebuild your folder structure.
 
@@ -28,7 +28,6 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 ### Set up Guard and let it run
 
     $ bundle install
-    $ bundle exec guard init
     $ bundle exec guard init steering
     $ bundle exec guard
 
@@ -38,6 +37,7 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 * Fix bug with empty template being generated for deleted file
 * Add an example - WIP at https://github.com/daaain/guard-steering-sample
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
+* Add silent option
 
 ## Changelog
 
