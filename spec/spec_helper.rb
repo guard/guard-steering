@@ -1,17 +1,40 @@
 require 'rspec'
+require 'fakefs/spec_helpers'
+require 'fileutils'
 require 'guard/steering'
+
+ENV['GUARD_ENV'] = 'test'
+
+# monkey patch for now
+FakeFS::FakeDir.class_eval do
+
+  # we need to be able to set mtime for newest directory tests
+  attr_accessor :mtime
+
+end
+
+module FileHelpers
+
+  # convert the path to the fakefs path
+  def ffs(path)
+    File.join(File.expand_path(File.join('..', '..'), __FILE__), path)
+  end
+
+  def file(f)
+    dir(File.dirname(f))
+    FileUtils.touch(f)
+  end
+
+  def dir(d, mtime = nil)
+    dir = FileUtils.mkpath(d)
+    dir.mtime = Time.utc(mtime) if mtime
+  end
+
+end
 
 RSpec.configure do |config|
   config.color_enabled = true
-  config.filter_run :focus => true
-  config.run_all_when_everything_filtered = true
-  
-  config.before(:each) do
-    ENV["GUARD_ENV"] = 'test'
-    @project_path    = Pathname.new(File.expand_path('../../', __FILE__))
-  end
 
-  config.after(:each) do
-    ENV["GUARD_ENV"] = nil
-  end
+  config.include FakeFS::SpecHelpers
+  config.include FileHelpers
 end

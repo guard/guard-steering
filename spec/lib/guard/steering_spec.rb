@@ -1,16 +1,12 @@
 require 'spec_helper'
-require 'fakefs/spec_helpers'
 
-describe "Guard-Steering" do
-  include FakeFS::SpecHelpers
-  
-  let(:guard) { Guard::Steering.new }
-  let(:watcher) { Guard::Watcher.new(%r{^yes/.+\.handlebars$}) }
-  
-  let(:klass) { Guard::Steering }
-  it "inherits from Guard" do
-    klass.ancestors.should include Guard::Guard
+module Guard
+  describe Steering do
+    describe '.initialize' do
+      it 'inherits from Guard' do
+        guard = Steering.new([], :output_folder => 'target')
+        guard.class.ancestors.should be_include Guard
+      end
+    end
   end
-  
-  
 end

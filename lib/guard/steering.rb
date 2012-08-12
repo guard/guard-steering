@@ -18,6 +18,7 @@ module Guard
       }.update(options)
 
       @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
+      # FIXME: if :output_folder is not defined "TypeError: can't convert false into String'" happens on the next line
       Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
     end
 

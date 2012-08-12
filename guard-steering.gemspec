@@ -11,17 +11,9 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Guard gem for steering}
   gem.homepage      = "https://github.com/daaain/guard-steering"
 
-  # gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  # gem.files         = `git ls-files`.split("\n")
   gem.files = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
-  # gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = ["lib"]
   
   gem.add_dependency 'guard', '~> 1.2.3'
   gem.add_dependency 'steering', '~> 1.1.1'
-  
-  gem.add_development_dependency 'bundler', '~> 1.0'
-  gem.add_development_dependency 'fakefs', '~> 0.3'
-  gem.add_development_dependency 'guard-rspec', '~> 1.1.0'
-  gem.add_development_dependency 'rspec', '~> 2.10.0'
 end
