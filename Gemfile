@@ -4,9 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rake', '>= 0.9.2'
-gem "steering", ">= 1.1.1",
-    :git => 'git://github.com/daaain/steering.git', 
-    :branch => 'registerpartials'
+gem "steering", ">= 1.2.0"
 
 group :development do
   gem 'guard-rspec', '>= 1.0'

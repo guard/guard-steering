@@ -14,6 +14,6 @@ Gem::Specification.new do |gem|
   gem.files = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
   gem.require_paths = ["lib"]
   
-  gem.add_dependency 'guard', '~> 1.2.3'
-  gem.add_dependency 'steering', '~> 1.1.1'
+  gem.add_dependency 'guard', '~> 1.2'
+  gem.add_dependency 'steering', '~> 1.2.0'
 end
