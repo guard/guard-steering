@@ -1,4 +1,4 @@
-# Guard::Steering [![Build Status](https://secure.travis-ci.org/daaain/guard-steering.png)](http://travis-ci.org/daaain/guard-steering) [![Dependency Status](https://gemnasium.com/daaain/guard-steering.png)](https://gemnasium.com/daaain/guard-steering) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/daaain/guard-steering)
+# Guard::Steering [![Build Status](https://secure.travis-ci.org/ustwo/guard-steering.png)](http://travis-ci.org/ustwo/guard-steering) [![Dependency Status](https://gemnasium.com/ustwo/guard-steering.png)](https://gemnasium.com/ustwo/guard-steering) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/ustwo/guard-steering)
 
 ## About
 
