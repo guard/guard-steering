@@ -3,6 +3,7 @@ require 'guard'
 require 'guard/guard'
 require 'guard/watcher'
 require 'steering'
+require 'fileutils'
 
 module Guard
   class Steering < Guard
@@ -17,15 +18,16 @@ module Guard
         :register_partials => false,
         :quiet => false
       }.update(options)
-
-      @output_folder = !@options[:output_folder].nil? && @options[:output_folder]
-      # FIXME: if :output_folder is not defined "TypeError: can't convert false into String'" happens on the next line
-      Dir.mkdir(@output_folder) if !File.directory?(@output_folder) && !@output_folder.nil?
     end
 
     # Call once when Guard starts. Please override initialize method to init stuff.
     # @raise [:task_has_failed] when start has failed
     def start
+      # create output folder (recursively) if it doesn't exist yet, but only if it's actually defined
+      unless @options[:output_folder].nil?
+        FileUtils.mkpath(@options[:output_folder]) unless File.directory?(@options[:output_folder])
+      end
+      
       UI.info("Guard::Steering has started watching your files with output folder set to '#{@output_folder}' (in case of 'nil' templates will be compiled to the folder where they are)") unless @options[:quiet]
 
       run_all if @options[:run_at_start]
@@ -46,8 +48,7 @@ module Guard
     # This method should be principally used for long action like running all specs/tests/...
     # @raise [:task_has_failed] when run_all has failed
     def run_all
-      paths = Dir.glob("**/*.*")
-      targets = Watcher.match_files(self, paths)  
+      targets = Watcher.match_files(self, Dir.glob("**/*.*"))
       run_on_changes targets
     end
 
@@ -57,7 +58,7 @@ module Guard
     def run_on_changes(paths)
       paths.each do |path|
           # use output_folder or default back to watched file location
-          run_steering(path, @output_folder || File.dirname(path))
+          run_steering(path, @options[:output_folder] || File.dirname(path))
       end
     end
 
@@ -66,8 +67,9 @@ module Guard
     # @raise [:task_has_failed] when run_on_change has failed
     def run_on_removals(paths)
       paths.each do |path|
-        output_folder = @output_folder || File.dirname(path)
-        File.exists?(output_folder + "/" + File.basename(path) + ".js")
+        output_folder = @options[:output_folder] || File.dirname(path)
+        fileString = output_folder + "/" + File.basename(path) + ".js"
+        File.delete(fileString) if File.exists?(fileString)
         UI.info "Guard::Steering deleted #{File.basename(path)}.js from #{output_folder}" unless @options[:quiet]
       end
     end
