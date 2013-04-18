@@ -14,13 +14,18 @@ For some comprehensive examples and explanation see [Guard-Steering-examples](ht
 
 Point the Guard watcher to your Handlebars template folder, set up the output folder in the options part and you're all set! Note: at the moment Guard::Steering won't rebuild your folder structure.
 
-	guard 'steering', :output_folder => "build/handlebars" do
-	 	watch(%r{^source/handlebars/.*\.handlebars$})
-	end
+    guard 'steering', {
+        :output_folder => "build/handlebars",
+        :run_at_start => true,
+        :register_partials => true,
+        :quiet => false
+      } do
+      watch(%r{^source/handlebars/.*\.handlebars$})
+    end
 
 ### Gemfile
 
-    source "http://rubygems.org"
+    source "https://rubygems.org"
     gem "guard"
     gem "steering"
     gem "guard-steering"
@@ -37,9 +42,12 @@ Point the Guard watcher to your Handlebars template folder, set up the output fo
 * Fix bug with empty template being generated for deleted file
 * Add an example - WIP at https://github.com/daaain/guard-steering-sample
 * Investigate supporting rebuilding of folder tree in output folder from inside source folder
-* Add silent option
 
 ## Changelog
+
+### 0.0.4
+* Adds silent option
+* Refactored target folder creation (it's now recursive and handles nil) and moved it to :start method to play nicer with the way Guard >1.6 works
 
 ### 0.0.3
 * Got Travis working
